@@ -1,7 +1,3 @@
----
-weight: 2
----
-
 # Authentication
 
 Retrieve your authentication token

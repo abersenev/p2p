@@ -1,7 +1,3 @@
----
-weight: 4
----
-
 # Examples
 
 Check some examples on how to integrate with our Staking API

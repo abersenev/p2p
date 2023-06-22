@@ -1,7 +1,3 @@
----
-weight: 3
----
-
 # Networks
 
 Check the detailed API documentation for each network

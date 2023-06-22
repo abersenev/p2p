@@ -1,7 +1,3 @@
----
-weight: 1
----
-
 # Introduction
 
 Our Liquid Staking API allows clients to access liquid tokens in a seamless way.

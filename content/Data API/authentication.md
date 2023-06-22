@@ -1,7 +1,3 @@
----
-weight: 2
----
-
 # Authentication
 
 Our Data API relies on the use of secure tokens. Each client will be provided with a unique authentication token that provides secure access to our services.

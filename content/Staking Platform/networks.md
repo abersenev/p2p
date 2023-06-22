@@ -1,7 +1,3 @@
----
-title: Networks Supported
----
-
 # Networks Supported
 
 | Network    | Status           |

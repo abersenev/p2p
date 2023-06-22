@@ -1,7 +1,3 @@
----
-weight: 1
----
-
 # Contacts
 
 We're here to help!

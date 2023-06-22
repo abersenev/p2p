@@ -1,7 +1,3 @@
----
-weight: 1
----
-
 # Introduction
 
 Our Staking API allows clients to initiate a staking request in a seamless way
