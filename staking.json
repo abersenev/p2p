@@ -1,0 +1,672 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Staking API",
+    "description": "API used for staking",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "servers": [],
+  "tags": [],
+  "paths": {
+    "/api/v1/eth/staking/direct/nodes-request/create": {
+      "post": {
+        "operationId": "RequestNodesController_create",
+        "summary": "",
+        "description": "Method to request nodes",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNodesRequestRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessResponse"
+                    }
+                  ],
+                  "properties": {
+                    "result": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ethereum Request Nodes"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/eth/staking/direct/nodes-request/status/{id}": {
+      "get": {
+        "operationId": "RequestNodesController_status",
+        "summary": "",
+        "description": "Method to check status of node request",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "The nodes request ID",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessResponse"
+                    }
+                  ],
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/NodesRequestResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ethereum Request Nodes"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/eth/staking/direct/tx/deposit": {
+      "post": {
+        "operationId": "EthereumController_deposit",
+        "summary": "",
+        "description": "Construct complete txdata for staking on P2P infrastructure",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StakeEthereumRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessResponse"
+                    }
+                  ],
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/UnsignedTransactionResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ethereum Staking"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/eth/staking/direct/tx/withdrawal": {
+      "post": {
+        "operationId": "EthereumController_withdrawal",
+        "summary": "",
+        "description": "Construct complete txdata for unstaking funds that were staked on P2P infrastructure",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UnstakeEthereumRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessResponse"
+                    }
+                  ],
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/UnsignedTransactionResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ethereum Staking"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/eth/staking/direct/validator/status": {
+      "post": {
+        "operationId": "ValidatorController_status",
+        "summary": "",
+        "description": "Method to check validators state - returns state of validators that hold current stake - active or not.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidatorsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessResponse"
+                    }
+                  ],
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ValidatorsResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ethereum Validator"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/eth/staking/direct/data/rewards": {
+      "post": {
+        "operationId": "RewardsController_rewards",
+        "summary": "",
+        "description": "Returns rewards",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RewardsEthereumRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/SuccessResponse"
+                    }
+                  ],
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/RewardsEthereumListResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Ethereum Rewards"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "nullable": true,
+            "default": null
+          },
+          "result": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "error",
+          "result"
+        ]
+      },
+      "ExceptionResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object"
+          },
+          "result": {
+            "type": "object",
+            "nullable": true,
+            "default": null
+          }
+        },
+        "required": [
+          "error",
+          "result"
+        ]
+      },
+      "DepositDataResponse": {
+        "type": "object",
+        "properties": {
+          "pubkey": {
+            "type": "string",
+            "description": "A public key"
+          },
+          "signature": {
+            "type": "string",
+            "description": "A valid signature"
+          },
+          "depositDataRoot": {
+            "type": "string",
+            "description": "The deposit data"
+          }
+        },
+        "required": [
+          "pubkey",
+          "signature",
+          "depositDataRoot"
+        ]
+      },
+      "NodesRequestResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID of the nodes request"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "init",
+              "ready",
+              "cancel"
+            ],
+            "description": "Current status of the nodes request"
+          },
+          "validatorsCount": {
+            "type": "number",
+            "description": "The number of validators"
+          },
+          "withdrawalAddress": {
+            "type": "string",
+            "description": "The withdrawal address for the given validator",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          },
+          "depositData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DepositDataResponse"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "validatorsCount",
+          "withdrawalAddress"
+        ]
+      },
+      "NodesOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "The location of the node (use `any` as a default)"
+          }
+        },
+        "required": [
+          "location"
+        ]
+      },
+      "CreateNodesRequestRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "ID of the nodes request"
+          },
+          "validatorsCount": {
+            "type": "number",
+            "description": "The count of validators",
+            "default": 1,
+            "minimum": 1
+          },
+          "withdrawalAddress": {
+            "type": "string",
+            "description": "The withdrawal address for the given validator",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          },
+          "nodesOptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NodesOptionsRequest"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "validatorsCount",
+          "withdrawalAddress",
+          "nodesOptions"
+        ]
+      },
+      "UnsignedTransactionResponse": {
+        "type": "object",
+        "properties": {
+          "transaction": {
+            "type": "string",
+            "description": "Serialized unsigned transaction"
+          }
+        },
+        "required": [
+          "transaction"
+        ]
+      },
+      "DepositDataRequest": {
+        "type": "object",
+        "properties": {
+          "pubkey": {
+            "type": "string",
+            "description": "A public key"
+          },
+          "signature": {
+            "type": "string",
+            "description": "A valid signature"
+          },
+          "depositDataRoot": {
+            "type": "string",
+            "description": "The deposit data"
+          }
+        },
+        "required": [
+          "pubkey",
+          "signature",
+          "depositDataRoot"
+        ]
+      },
+      "StakeEthereumRequest": {
+        "type": "object",
+        "properties": {
+          "withdrawalAddress": {
+            "type": "string",
+            "description": "The withdrawal address for the given validator",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          },
+          "depositData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DepositDataRequest"
+            }
+          }
+        },
+        "required": [
+          "withdrawalAddress",
+          "depositData"
+        ]
+      },
+      "UnstakeEthereumRequest": {
+        "type": "object",
+        "properties": {
+          "withdrawalAddress": {
+            "type": "string",
+            "description": "The withdrawal address for the given validator",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          },
+          "depositData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DepositDataRequest"
+            }
+          }
+        },
+        "required": [
+          "withdrawalAddress",
+          "depositData"
+        ]
+      },
+      "ValidatorResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "deposited",
+              "pending",
+              "active_online",
+              "active_offline",
+              "slashed",
+              "exited"
+            ],
+            "description": "State of the validator"
+          },
+          "amount": {
+            "type": "number",
+            "description": "The validator current status"
+          },
+          "pubkey": {
+            "type": "string",
+            "description": "A public key"
+          },
+          "withdrawalAddress": {
+            "type": "string",
+            "description": "The withdrawal address for the given validator",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          }
+        },
+        "required": [
+          "status",
+          "amount",
+          "pubkey",
+          "withdrawalAddress"
+        ]
+      },
+      "ValidatorsResponse": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidatorResponse"
+            }
+          }
+        },
+        "required": [
+          "list"
+        ]
+      },
+      "ValidatorsRequest": {
+        "type": "object",
+        "properties": {
+          "pubkeys": {
+            "description": "List pubkey of validators",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "pubkeys"
+        ]
+      },
+      "RewardsEthereumResponse": {
+        "type": "object",
+        "properties": {
+          "periodPaymentDateAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Start of the period for the reward"
+          },
+          "rewardAmount": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Rewards amount"
+          },
+          "rewardType": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Rewards type"
+          }
+        },
+        "required": [
+          "periodPaymentDateAt",
+          "rewardAmount",
+          "rewardType"
+        ]
+      },
+      "RewardsEthereumListResponse": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RewardsEthereumResponse"
+            }
+          }
+        },
+        "required": [
+          "list"
+        ]
+      },
+      "RewardsEthereumRequest": {
+        "type": "object",
+        "properties": {
+          "startAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Start of the period for the reward"
+          },
+          "endAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "End of the period for the reward"
+          },
+          "withdrawalAddress": {
+            "type": "string",
+            "description": "The withdrawal address for the given validator",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          }
+        },
+        "required": [
+          "startAt",
+          "endAt",
+          "withdrawalAddress"
+        ]
+      }
+    }
+  }
+}
