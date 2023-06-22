@@ -1,0 +1,8 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'P2P Staking Platform'
+theme = 'book'
+
+[params]
+BookSection = '/'
+BookMenuBundle = '/menu'
