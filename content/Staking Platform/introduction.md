@@ -4,4 +4,4 @@ The staking ecosystem has grown rapidly in the past months with “The Merge”,
 
 **The P2P Staking Platform serves as an integration point for enterprises to access the entire staking ecosystem**. The platform provides clients with access to direct staking, liquid staking, insurance protection against staking risks, and DeFi. The product caters to institutional clients, crypto exchanges, crypto wallets, and anyone else who wants to participate in staking.
 
-![intro](/intro1.png)
+![intro](/p2p/intro1.png)
