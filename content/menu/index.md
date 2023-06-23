@@ -11,7 +11,7 @@ headless: true
   - [Introduction]({{< relref "Staking API/introduction.md" >}})
   - [Authentication]({{< relref "Staking API/authentication.md" >}})
   - [Networks]({{< relref "Staking API/networks.md" >}})
-    - [Ethereum API Docs ↪](/api/staking-api.html)
+    - [Ethereum API Docs ↪](/p2p/api/staking-api.html)
   - [Examples]({{< relref "Staking API/examples.md" >}})
 <br/>
 

@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = '/p2p/'
 languageCode = 'en-us'
 title = 'P2P Staking Platform'
 theme = 'book'
