@@ -1,7 +1,23 @@
-# Introduction
+# Overview
 
-Our Staking API allows clients to initiate a staking request in a seamless way
+The Staking API allows you to initiate staking requests seamlessly.
 
-**Staking API enables you to integrate your systems with our validators' infrastructure**. You have the ability to initiate a staking request and retrieve staking position data without using any dedicated web page form. By integrating with our Staking API, offering staking services to your customers will be much easier.
+The Staking API allows you to integrate your systems with our validators' infrastructure. You can initiate staking requests and retrieve staking position data without relying on dedicated web page forms. By integrating with our Staking API, offering staking services to your customers becomes significantly easier.
+
+With the Staking API, you will receive:
+
+- Access to the P2P validator infrastructure, which is consistently ranked among the top-performing validators.
+- Customer-oriented support through a dedicated channel with our team of developers.
+- The ability to configure your node by selecting the location, MEV relay, and regulatory entity (in development).
+
+The basic information about the interaction with the Staking API is shown in the picture below.
 
 ![intro](/p2p/intro2.png)
+
+If you have any questions or need advice, please [contact](http://p2p.demo.documentat.io/support/contacts/) us.
+
+## What next?
+
+- Learn more about [Authentication](http://p2p.demo.documentat.io/staking-api/authentication/).
+- Refer to the [Stakig API Reference ](http://p2p.demo.documentat.io/api/staking-api.html).
+- Learn more about using the API with [Examples](http://p2p.demo.documentat.io/staking-api/examples/).
