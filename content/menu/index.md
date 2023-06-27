@@ -8,7 +8,7 @@ headless: true
 <br/>
 
 - **STAKING API**
-  - [Introduction]({{< relref "Staking API/introduction.md" >}})
+  - [Overview]({{< relref "Staking API/overview.md" >}})
   - [Authentication]({{< relref "Staking API/authentication.md" >}})
   - [Networks]({{< relref "Staking API/networks.md" >}})
     - [Ethereum API Docs ↪](/p2p/api/staking-api.html)

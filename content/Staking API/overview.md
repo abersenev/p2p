@@ -14,10 +14,10 @@ The basic information about the interaction with the Staking API is shown in the
 
 ![intro](/p2p/intro2.png)
 
-If you have any questions or need advice, please [contact](http://p2p.demo.documentat.io/support/contacts/) us.
+If you have any questions or need advice, please [contact](/p2p/support/contacts/) us.
 
 ## What next?
 
-- Learn more about [Authentication](http://p2p.demo.documentat.io/staking-api/authentication/).
-- Refer to the [Stakig API Reference ](http://p2p.demo.documentat.io/api/staking-api.html).
-- Learn more about using the API with [Examples](http://p2p.demo.documentat.io/staking-api/examples/).
+- Learn more about [Authentication](/p2p/staking-api/authentication/).
+- Refer to the [Stakig API Reference ](/p2p/api/staking-api.html).
+- Learn more about using the API with [Examples](/p2p/staking-api/examples/).
