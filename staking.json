@@ -11,7 +11,7 @@
   "paths": {
     "/api/v1/eth/staking/direct/nodes-request/create": {
       "post": {
-        "operationId": "RequestNodesController_create",
+        "operationId": "NodesRequestController_create",
         "summary": "",
         "description": "Method to request nodes",
         "parameters": [],
@@ -29,7 +29,7 @@
           "201": {
             "description": "OK",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
                   "allOf": [
                     {
@@ -40,6 +40,58 @@
                     "result": {
                       "type": "boolean",
                       "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NoTokenException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/WrongTokenException"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NodesRequestCreateException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/TokenGuardException"
+                        }
+                      ]
                     }
                   }
                 }
@@ -59,7 +111,7 @@
     },
     "/api/v1/eth/staking/direct/nodes-request/status/{id}": {
       "get": {
-        "operationId": "RequestNodesController_status",
+        "operationId": "NodesRequestController_status",
         "summary": "",
         "description": "Method to check status of node request",
         "parameters": [
@@ -78,7 +130,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
                   "allOf": [
                     {
@@ -87,9 +139,84 @@
                   ],
                   "properties": {
                     "result": {
-                      "allOf": [
+                      "oneOf": [
                         {
                           "$ref": "#/components/schemas/NodesRequestResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NoTokenException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/WrongTokenException"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NodesRequestNotFoundException"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NodesRequestGetException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/TokenGuardException"
                         }
                       ]
                     }
@@ -111,7 +238,7 @@
     },
     "/api/v1/eth/staking/direct/tx/deposit": {
       "post": {
-        "operationId": "EthereumController_deposit",
+        "operationId": "StakingController_deposit",
         "summary": "",
         "description": "Construct complete txdata for staking on P2P infrastructure",
         "parameters": [],
@@ -129,7 +256,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
                   "allOf": [
                     {
@@ -138,9 +265,61 @@
                   ],
                   "properties": {
                     "result": {
-                      "allOf": [
+                      "oneOf": [
                         {
                           "$ref": "#/components/schemas/UnsignedTransactionResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NoTokenException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/WrongTokenException"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Web3CreateTransactionException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/TokenGuardException"
                         }
                       ]
                     }
@@ -162,7 +341,7 @@
     },
     "/api/v1/eth/staking/direct/tx/withdrawal": {
       "post": {
-        "operationId": "EthereumController_withdrawal",
+        "operationId": "StakingController_withdrawal",
         "summary": "",
         "description": "Construct complete txdata for unstaking funds that were staked on P2P infrastructure",
         "parameters": [],
@@ -180,7 +359,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
                   "allOf": [
                     {
@@ -189,9 +368,61 @@
                   ],
                   "properties": {
                     "result": {
-                      "allOf": [
+                      "oneOf": [
                         {
                           "$ref": "#/components/schemas/UnsignedTransactionResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NoTokenException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/WrongTokenException"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/Web3CreateTransactionException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/TokenGuardException"
                         }
                       ]
                     }
@@ -231,7 +462,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
                   "allOf": [
                     {
@@ -240,9 +471,61 @@
                   ],
                   "properties": {
                     "result": {
-                      "allOf": [
+                      "oneOf": [
                         {
                           "$ref": "#/components/schemas/ValidatorsResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NoTokenException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/WrongTokenException"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/BeaconchainGetDataException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/TokenGuardException"
                         }
                       ]
                     }
@@ -282,7 +565,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
+              "application/json": {
                 "schema": {
                   "allOf": [
                     {
@@ -291,9 +574,61 @@
                   ],
                   "properties": {
                     "result": {
-                      "allOf": [
+                      "oneOf": [
                         {
                           "$ref": "#/components/schemas/RewardsEthereumListResponse"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/NoTokenException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/WrongTokenException"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ExceptionResponse"
+                    }
+                  ],
+                  "properties": {
+                    "error": {
+                      "oneOf": [
+                        {
+                          "$ref": "#/components/schemas/HasuraGetRewardsException"
+                        },
+                        {
+                          "$ref": "#/components/schemas/TokenGuardException"
                         }
                       ]
                     }
@@ -419,6 +754,94 @@
           "withdrawalAddress"
         ]
       },
+      "NoTokenException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 101111
+          },
+          "message": {
+            "type": "string",
+            "default": "No token"
+          },
+          "name": {
+            "type": "string",
+            "default": "NoTokenException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
+        ]
+      },
+      "WrongTokenException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 101109
+          },
+          "message": {
+            "type": "string",
+            "default": "Wrong token"
+          },
+          "name": {
+            "type": "string",
+            "default": "WrongTokenException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
+        ]
+      },
+      "NodesRequestCreateException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 107108
+          },
+          "message": {
+            "type": "string",
+            "default": "Error creating nodes request"
+          },
+          "name": {
+            "type": "string",
+            "default": "NodesRequestCreateException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
+        ]
+      },
+      "TokenGuardException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 101110
+          },
+          "message": {
+            "type": "string",
+            "default": "Token guard error"
+          },
+          "name": {
+            "type": "string",
+            "default": "TokenGuardException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
+        ]
+      },
       "NodesOptionsRequest": {
         "type": "object",
         "properties": {
@@ -464,6 +887,50 @@
           "nodesOptions"
         ]
       },
+      "NodesRequestNotFoundException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 107106
+          },
+          "message": {
+            "type": "string",
+            "default": "Nodes request not found"
+          },
+          "name": {
+            "type": "string",
+            "default": "NodesRequestNotFoundException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
+        ]
+      },
+      "NodesRequestGetException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 107109
+          },
+          "message": {
+            "type": "string",
+            "default": "Error getting nodes request"
+          },
+          "name": {
+            "type": "string",
+            "default": "NodesRequestGetException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
+        ]
+      },
       "UnsignedTransactionResponse": {
         "type": "object",
         "properties": {
@@ -474,6 +941,28 @@
         },
         "required": [
           "transaction"
+        ]
+      },
+      "Web3CreateTransactionException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 105103
+          },
+          "message": {
+            "type": "string",
+            "default": "Could not create transaction"
+          },
+          "name": {
+            "type": "string",
+            "default": "Web3CreateTransactionException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
         ]
       },
       "DepositDataRequest": {
@@ -588,6 +1077,28 @@
           "list"
         ]
       },
+      "BeaconchainGetDataException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 104100
+          },
+          "message": {
+            "type": "string",
+            "default": "Beaconchain not avaible"
+          },
+          "name": {
+            "type": "string",
+            "default": "BeaconchainGetDataException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
+        ]
+      },
       "ValidatorsRequest": {
         "type": "object",
         "properties": {
@@ -640,6 +1151,28 @@
         },
         "required": [
           "list"
+        ]
+      },
+      "HasuraGetRewardsException": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "default": 106100
+          },
+          "message": {
+            "type": "string",
+            "default": "Analytics get rewards not avaible"
+          },
+          "name": {
+            "type": "string",
+            "default": "HasuraGetRewardsException"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "name"
         ]
       },
       "RewardsEthereumRequest": {
