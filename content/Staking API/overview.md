@@ -1,26 +1,39 @@
 # Overview
 
-The Staking API allows you to initiate staking requests seamlessly.
+The Staking API provides seamless integration for initiating staking requests and accessing staking data. By integrating your systems with our validators' infrastructure, you can eliminate the need for dedicated web page forms, making it easier to offer staking services to your customers.
 
-The Staking API allows you to integrate your systems with our validators' infrastructure. You can initiate staking requests and retrieve staking data without relying on dedicated web page forms. By integrating with our Staking API, offering staking services to your customers becomes significantly easier.
+## Key Benefits
 
-With the Staking API, you will receive:
+- **Reliable Infrastructure**: Gain access to our P2P validator infrastructure, consistently ranked among the top-performing validators, ensuring the reliability and security of your staking operations.
 
-- Access to the P2P validator infrastructure, which is consistently ranked among the top-performing validators.
-- Customer-oriented support through a dedicated channel with our team of developers.
-- The ability to configure your node by selecting the location, MEV relay, and regulatory entity (in development).
-- Extensive insurance protection against slashing, with customizable plans tailored to fit your specific needs.
+- **Dedicated Support**: Our experienced developers provide customer-oriented support through a dedicated channel, assisting you with any questions or issues during the integration process.
 
-The basic information about the interaction with the Staking API is shown in the picture below.
+- **Customizable Configuration**: Tailor your staking node by selecting the desired location, MEV relay, and regulatory entity (currently in development). This flexibility allows you to align the staking setup with your specific requirements.
 
-![intro](/p2p/intro2.png)
+- **Slashing Insurance**: We offer extensive insurance protection against slashing events, with customizable plans to mitigate the risks associated with staking.
 
-The Staking API will gradually support close to 50 proof-of-stake protocols, giving you the ability to stake in all of them. You can find the list of currently supported networks at [Networks Supported](/p2p/staking-platform/networks-supported).
+To help you get started, refer to the following image illustrating the basic information about interacting with the Staking API:
 
-If you have any questions or need advice, please [contact](/p2p/support/contacts/) us.
+![Staking API Overview](/p2p/intro2.png)
 
-## What next?
+By seamlessly integrating the Staking API into your systems, you can enhance your offering and simplify the staking process for your customers.
+
+The Staking API is gradually expanding to support close to 50 proof-of-stake protocols, providing you with the ability to stake in all of them. For the list of currently supported networks, visit [Networks Supported](/p2p/staking-platform/networks-supported).
+
+## API Limitations
+
+To ensure optimal usage of the Staking API, please be aware of the following limitations:
+
+- **Request Rate Limit**: The API enforces a maximum of 100 requests per minute. Ensure that your application adheres to this limit to avoid disruptions in service.
+
+- **Response Times**: While the P2P infrastructure aims for an average response time of 200 milliseconds (ms), please note that response times may vary depending on the specific nature of the request. P2P guarantees a 95th percentile response time of 10 seconds and a 99th percentile response time of 60 seconds to provide transparency.
+
+By keeping these limitations in mind, you can optimize your usage of the Staking API and ensure a smooth and reliable integration process.
+
+If you have any questions or need further assistance, please [contact](/p2p/support/contacts/) us. We are committed to helping you make the most of the Staking API and providing a seamless staking experience for your customers.
+
+## What's Next?
 
 - Learn more about [Authentication](/p2p/staking-api/authentication/).
-- Refer to the [Stakig API Reference](/p2p/api/staking-api.html).
-- Learn more about using the API with [Examples](/p2p/staking-api/examples/).
+- Refer to the [Staking API Reference](/p2p/api/staking-api.html).
+- Explore [Examples](/p2p/staking-api/examples/) to learn how to use the API effectively.
