@@ -12,8 +12,8 @@
     "/api/v1/eth/staking/direct/nodes-request/create": {
       "post": {
         "operationId": "NodesRequestController_create",
-        "summary": "",
-        "description": "Method to request nodes",
+        "summary": "Set up nodes",
+        "description": "Set up nodes for staking using P2P infrastructure.",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -112,14 +112,14 @@
     "/api/v1/eth/staking/direct/nodes-request/status/{id}": {
       "get": {
         "operationId": "NodesRequestController_status",
-        "summary": "",
-        "description": "Method to check status of node request",
+        "summary": "Check status",
+        "description": "Check the status of the node set-up operation.",
         "parameters": [
           {
             "name": "id",
             "required": true,
             "in": "path",
-            "description": "The nodes request ID",
+            "description": "UUID that was specified in the node set-up request.",
             "schema": {
               "format": "uuid",
               "type": "string"
@@ -239,8 +239,8 @@
     "/api/v1/eth/staking/direct/tx/deposit": {
       "post": {
         "operationId": "StakingController_deposit",
-        "summary": "",
-        "description": "Construct complete txdata for staking on P2P infrastructure",
+        "summary": "Stake funds",
+        "description": "Stake the funds on P2P infrastructure.",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -342,8 +342,8 @@
     "/api/v1/eth/staking/direct/tx/withdrawal": {
       "post": {
         "operationId": "StakingController_withdrawal",
-        "summary": "",
-        "description": "Construct complete txdata for unstaking funds that were staked on P2P infrastructure",
+        "summary": "Unstake funds",
+        "description": "Unstake the funds on P2P infrastructure.",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -445,8 +445,8 @@
     "/api/v1/eth/staking/direct/validator/status": {
       "post": {
         "operationId": "ValidatorController_status",
-        "summary": "",
-        "description": "Method to check validators state - returns state of validators that hold current stake - active or not.",
+        "summary": "Check status",
+        "description": "Check the status of the validators.",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -548,8 +548,8 @@
     "/api/v1/eth/staking/direct/data/rewards": {
       "post": {
         "operationId": "RewardsController_rewards",
-        "summary": "",
-        "description": "Returns rewards",
+        "summary": "Get rewards",
+        "description": "Get list of rewards for the given period.",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -697,15 +697,15 @@
         "properties": {
           "pubkey": {
             "type": "string",
-            "description": "A public key"
+            "description": "Validator public key."
           },
           "signature": {
             "type": "string",
-            "description": "A valid signature"
+            "description": "Validator signature."
           },
           "depositDataRoot": {
             "type": "string",
-            "description": "The deposit data"
+            "description": "Transaction root hash."
           }
         },
         "required": [
@@ -720,7 +720,7 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "description": "ID of the nodes request"
+            "description": "UUID of the set-up operation."
           },
           "status": {
             "type": "string",
@@ -729,15 +729,15 @@
               "ready",
               "cancel"
             ],
-            "description": "Current status of the nodes request"
+            "description": "<p>Current status of the operation:</p><ul><li><i>init</i> — node setup in progress.</li><li><i>ready</i> — node setup was successful.</li><li><i>cancel</i> — node setup was cancelled.</li></ul>"
           },
           "validatorsCount": {
             "type": "number",
-            "description": "The number of validators"
+            "description": "Number of validators."
           },
           "withdrawalAddress": {
             "type": "string",
-            "description": "The withdrawal address for the given validator",
+            "description": "Withdrawal address for the validators.",
             "pattern": "^0x[a-fA-F0-9]{40}$"
           },
           "depositData": {
@@ -847,7 +847,7 @@
         "properties": {
           "location": {
             "type": "string",
-            "description": "The location of the node (use `any` as a default)"
+            "description": "Node location. Currently, only `any` is supported."
           }
         },
         "required": [
@@ -860,17 +860,17 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "description": "ID of the nodes request"
+            "description": "Arbitrary UUID. You can later use that UUID to check the status of the set-up operation."
           },
           "validatorsCount": {
             "type": "number",
-            "description": "The count of validators",
+            "description": "Number of validators. One validator is equal to 32 ETH.",
             "default": 1,
             "minimum": 1
           },
           "withdrawalAddress": {
             "type": "string",
-            "description": "The withdrawal address for the given validator",
+            "description": "Withdrawal address for the validators.",
             "pattern": "^0x[a-fA-F0-9]{40}$"
           },
           "nodesOptions": {
@@ -885,7 +885,17 @@
           "validatorsCount",
           "withdrawalAddress",
           "nodesOptions"
-        ]
+        ],
+        "example": {
+          "id": "24df3fe2-f7ad-46ed-9050-d35a76da2fe4",
+          "validatorsCount": 1,
+          "withdrawalAddress": "0x98a3BcBb47D8504ac12975f5ab5067BfbaDE1780",
+          "nodesOptions": [
+            {
+              "location": "any"
+            }
+          ]
+        }
       },
       "NodesRequestNotFoundException": {
         "type": "object",
@@ -936,7 +946,7 @@
         "properties": {
           "transaction": {
             "type": "string",
-            "description": "Serialized unsigned transaction"
+            "description": "Serialized unsigned transaction."
           }
         },
         "required": [
@@ -970,15 +980,15 @@
         "properties": {
           "pubkey": {
             "type": "string",
-            "description": "A public key"
+            "description": "Validator public key."
           },
           "signature": {
             "type": "string",
-            "description": "A valid signature"
+            "description": "Validator signature."
           },
           "depositDataRoot": {
             "type": "string",
-            "description": "The deposit data"
+            "description": "Transaction root hash."
           }
         },
         "required": [
@@ -992,7 +1002,7 @@
         "properties": {
           "withdrawalAddress": {
             "type": "string",
-            "description": "The withdrawal address for the given validator",
+            "description": "Withdrawal address.",
             "pattern": "^0x[a-fA-F0-9]{40}$"
           },
           "depositData": {
@@ -1005,14 +1015,24 @@
         "required": [
           "withdrawalAddress",
           "depositData"
-        ]
+        ],
+        "example": {
+          "withdrawalAddress": "0x98a3BcBb47D8504ac12975f5ab5067BfbaDE1780",
+          "depositData": [
+            {
+              "pubkey": "80fc756a082180f9408e83b9717b2bd4f79b864243b3cf187b64f25c2ddc4ebe17e7bf3086d863b5733c3adb0d769065",
+              "signature": "966c9558ae8533f0046ea71d51f293e26b943d21ee97482d53c150bdb8d646fe2ca7a685f6a17a534ad538b1e64672591049159c661e5904bca7c9032f75e57584c6f1583182f99858327611094b700f7dcad7480dd9678da706ef74d7ce732d",
+              "depositDataRoot": "b0878d8d83a76a60f059eb17b21ca10a5e0748bbf634b46c27f2da955d69f341"
+            }
+          ]
+        }
       },
       "UnstakeEthereumRequest": {
         "type": "object",
         "properties": {
           "withdrawalAddress": {
             "type": "string",
-            "description": "The withdrawal address for the given validator",
+            "description": "Withdrawal address.",
             "pattern": "^0x[a-fA-F0-9]{40}$"
           },
           "depositData": {
@@ -1025,7 +1045,17 @@
         "required": [
           "withdrawalAddress",
           "depositData"
-        ]
+        ],
+        "example": {
+          "withdrawalAddress": "0x98a3BcBb47D8504ac12975f5ab5067BfbaDE1780",
+          "depositData": [
+            {
+              "pubkey": "80fc756a082180f9408e83b9717b2bd4f79b864243b3cf187b64f25c2ddc4ebe17e7bf3086d863b5733c3adb0d769065",
+              "signature": "966c9558ae8533f0046ea71d51f293e26b943d21ee97482d53c150bdb8d646fe2ca7a685f6a17a534ad538b1e64672591049159c661e5904bca7c9032f75e57584c6f1583182f99858327611094b700f7dcad7480dd9678da706ef74d7ce732d",
+              "depositDataRoot": "b0878d8d83a76a60f059eb17b21ca10a5e0748bbf634b46c27f2da955d69f341"
+            }
+          ]
+        }
       },
       "ValidatorResponse": {
         "type": "object",
@@ -1040,19 +1070,19 @@
               "slashed",
               "exited"
             ],
-            "description": "State of the validator"
+            "description": "Validator status."
           },
           "amount": {
             "type": "number",
-            "description": "The validator current status"
+            "description": "Total stake amount for the validator."
           },
           "pubkey": {
             "type": "string",
-            "description": "A public key"
+            "description": "Validator public key."
           },
           "withdrawalAddress": {
             "type": "string",
-            "description": "The withdrawal address for the given validator",
+            "description": "Withdrawal address for the validator.",
             "pattern": "^0x[a-fA-F0-9]{40}$"
           }
         },
@@ -1086,7 +1116,7 @@
           },
           "message": {
             "type": "string",
-            "default": "Beaconchain not avaible"
+            "default": "Beaconchain not available"
           },
           "name": {
             "type": "string",
@@ -1103,7 +1133,7 @@
         "type": "object",
         "properties": {
           "pubkeys": {
-            "description": "List pubkey of validators",
+            "description": "List of validator public keys",
             "type": "array",
             "items": {
               "type": "string"
@@ -1112,7 +1142,12 @@
         },
         "required": [
           "pubkeys"
-        ]
+        ],
+        "example": {
+          "pubkeys": [
+            "80fc756a082180f9408e83b9717b2bd4f79b864243b3cf187b64f25c2ddc4ebe17e7bf3086d863b5733c3adb0d769065"
+          ]
+        }
       },
       "RewardsEthereumResponse": {
         "type": "object",
@@ -1120,17 +1155,17 @@
           "periodPaymentDateAt": {
             "type": "string",
             "format": "date-time",
-            "description": "Start of the period for the reward"
+            "description": "Payment date."
           },
           "rewardAmount": {
             "type": "string",
             "format": "uuid",
-            "description": "Rewards amount"
+            "description": "Reward amount."
           },
           "rewardType": {
             "type": "string",
             "format": "uuid",
-            "description": "Rewards type"
+            "description": "Reward type."
           }
         },
         "required": [
@@ -1162,7 +1197,7 @@
           },
           "message": {
             "type": "string",
-            "default": "Analytics get rewards not avaible"
+            "default": "Analytics get rewards not available"
           },
           "name": {
             "type": "string",
@@ -1181,16 +1216,16 @@
           "startAt": {
             "type": "string",
             "format": "date-time",
-            "description": "Start of the period for the reward"
+            "description": "Start of the reward period."
           },
           "endAt": {
             "type": "string",
             "format": "date-time",
-            "description": "End of the period for the reward"
+            "description": "End of the reward period."
           },
           "withdrawalAddress": {
             "type": "string",
-            "description": "The withdrawal address for the given validator",
+            "description": "Withdrawal address of the validator.",
             "pattern": "^0x[a-fA-F0-9]{40}$"
           }
         },
@@ -1198,7 +1233,12 @@
           "startAt",
           "endAt",
           "withdrawalAddress"
-        ]
+        ],
+        "example": {
+          "startAt": "2023-05-30T06:46:04.415Z",
+          "endAt": "2023-06-30T06:46:04.415Z",
+          "withdrawalAddress": "0x98a3BcBb47D8504ac12975f5ab5067BfbaDE1780"
+        }
       }
     }
   }
