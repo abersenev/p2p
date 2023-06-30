@@ -1070,7 +1070,7 @@
               "slashed",
               "exited"
             ],
-            "description": "Validator status."
+            "description": "<p>Validator status:</p><ul><li><i>deposited</i> — deposit processed by Ethereum Beacon Chain.</li><li><i>pending</i> — validator in activation queue.</li><li><i>active_online</i> — validator activated and participating in testing and proposing blocks.</li><li><i>active_offline</i> — validator offline and not participating in activities.</li><li><i>slashed</i> — validator slashed due to misbehavior.</li><li><i>exited</i> — validator exited network and no longer a validator.</li></ul>"
           },
           "amount": {
             "type": "number",
