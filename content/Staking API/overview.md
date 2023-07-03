@@ -35,5 +35,5 @@ If you have any questions or need further assistance, please [contact](/p2p/supp
 ## What's Next?
 
 - Learn more about [Authentication](/p2p/staking-api/authentication/).
-- Refer to the [Staking API Reference](/p2p/api/staking-api.html).
+- Refer to [Staking API](/p2p/api/staking-api.html) reference.
 - Explore [Examples](/p2p/staking-api/examples/) to learn how to use the API effectively.
