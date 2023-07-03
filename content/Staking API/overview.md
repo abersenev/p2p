@@ -1,6 +1,6 @@
 # Overview
 
-The Staking API provides seamless integration for initiating staking requests and accessing staking data. By integrating your systems with our validators' infrastructure, you can eliminate the need for dedicated web page forms, making it easier to offer staking services to your customers.
+Staking API provides seamless integration for initiating staking requests and accessing staking data. By integrating your systems with our validators' infrastructure, you can eliminate the need for dedicated web page forms, making it easier to offer staking services to your customers.
 
 ## Key Benefits
 
@@ -12,25 +12,25 @@ The Staking API provides seamless integration for initiating staking requests an
 
 - **Slashing Insurance**: We offer extensive insurance protection against slashing events, with customizable plans to mitigate the risks associated with staking.
 
-To help you get started, refer to the following image illustrating the basic information about interacting with the Staking API:
+To help you get started, refer to the following image illustrating the basic information about interacting with Staking API:
 
 ![Staking API Overview](/p2p/intro2.png)
 
-By seamlessly integrating the Staking API into your systems, you can enhance your offering and simplify the staking process for your customers.
+By seamlessly integrating Staking API into your systems, you can enhance your offering and simplify the staking process for your customers.
 
-The Staking API is gradually expanding to support close to 50 proof-of-stake protocols, providing you with the ability to stake in all of them. For the list of currently supported networks, visit [Networks Supported](/p2p/staking-platform/networks-supported).
+Staking API is gradually expanding to support close to 50 proof-of-stake protocols, providing you with the ability to stake in all of them. For the list of currently supported networks, visit [Networks Supported](/p2p/staking-platform/networks-supported).
 
 ## API Limitations
 
-To ensure optimal usage of the Staking API, please be aware of the following limitations:
+To ensure optimal usage of Staking API, please be aware of the following limitations:
 
 - **Request Rate Limit**: The API enforces a maximum of 100 requests per minute. Ensure that your application adheres to this limit to avoid disruptions in service.
 
 - **Response Times**: While the P2P infrastructure aims for an average response time of 200 milliseconds (ms), please note that response times may vary depending on the specific nature of the request. P2P guarantees a 95th percentile response time of 10 seconds and a 99th percentile response time of 60 seconds to provide transparency.
 
-By keeping these limitations in mind, you can optimize your usage of the Staking API and ensure a smooth and reliable integration process.
+By keeping these limitations in mind, you can optimize your usage of Staking API and ensure a smooth and reliable integration process.
 
-If you have any questions or need further assistance, please [contact](/p2p/support/contacts/) us. We are committed to helping you make the most of the Staking API and providing a seamless staking experience for your customers.
+If you have any questions or need further assistance, please [contact](/p2p/support/contacts/) us. We are committed to helping you make the most of Staking API and providing a seamless staking experience for your customers.
 
 ## What's Next?
 
