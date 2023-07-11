@@ -14,7 +14,7 @@ Staking API provides seamless integration for initiating staking requests and ac
 
 To help you get started, refer to the following image illustrating the basic information about interacting with Staking API:
 
-![Staking API Overview](/p2p/intro2.png)
+![Staking API Overview](/p2p/staking_api.svg)
 
 By seamlessly integrating Staking API into your systems, you can enhance your offering and simplify the staking process for your customers.
 
@@ -34,6 +34,7 @@ If you have any questions or need further assistance, please [contact](/p2p/supp
 
 ## What's Next?
 
-- Learn more about [Authentication](/p2p/staking-api/authentication/).
+- Learn more about [Authentication](/p2p/staking-platform/authentication/).
+- [Getting Started](/p2p/staking-api/start/).
 - Refer to [Staking API](/p2p/api/staking-api.html) reference.
 - Explore [Examples](/p2p/staking-api/examples/) to learn how to use the API effectively.
